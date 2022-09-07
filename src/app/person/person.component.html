@@ -1,0 +1,110 @@
+<br>
+<h1 style="text-align: center;">Person Form</h1><br>
+<form [formGroup]="personForm" style="margin-left: 170px;">
+<div class="row col-sm-12">
+    <div class="col-sm-4">
+        <h4>First Name</h4>
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text"  name="firstname" placeholder="First Name" formControlName="FirstName">
+        <mat-error *ngIf="personForm.get('FirstName')!.errors!['required']">
+            First Name is required
+        </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+        <h4>Middle Name</h4>
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Middle Name</mat-label>
+        <input matInput type="text"  name="MiddleName" placeholder="Middle Name" formControlName="MiddleName">
+        </mat-form-field>
+    </div>
+
+    <div class="col-sm-4">
+        <h4>Last Name</h4>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input  matInput type="text"  name="LastName" placeholder="Last Name" formControlName="LastName">
+            <mat-error *ngIf="personForm.get('LastName')!.errors!['required']">
+                Last Name is required
+            </mat-error>
+            </mat-form-field>
+    </div>
+</div>
+
+<div class="row col-sm-12">
+    <div class="col-sm-4">
+        <h4>Department</h4>
+    <mat-form-field appearance="fill">
+        <mat-label>Department</mat-label>
+        <mat-select>
+        <mat-option *ngFor="let dep of dept" [value]="dep.value">
+            {{dep.viewValue}}
+        </mat-option>
+        </mat-select>
+    </mat-form-field>
+    </div>
+
+    <div class="col-sm-4">
+        <h4>Gender</h4>
+        <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select>
+            <mat-option *ngFor="let gen of Gender" [value]="gen.value">
+                {{gen.viewValue}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>    
+
+    <div class="col-sm-4">
+        <h4>Enter DOB</h4>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter DOB</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    </div>
+</div>
+
+<div class="row col-sm-12">
+
+    <div class="col-sm-4">
+        <h4>Address</h4>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput type="text"  name="Address" placeholder="Address" formControlName="Address">
+            <mat-error *ngIf="personForm.get('Address')!.errors!['required']">
+                Address is required
+            </mat-error>
+            </mat-form-field>
+    </div>
+
+    <div class="col-sm-4">
+        <h4>Pincode</h4>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Pincode</mat-label>
+            <input matInput type="text"  name="Pincode" placeholder="Pincode" formControlName="Pincode">
+            <mat-error *ngIf="personForm.get('Pincode')!.errors!['required']">
+                <!-- Pincode is required -->
+                Pincode should be of 6 Digits
+            </mat-error>
+
+            <mat-error *ngIf="personForm.get('Pincode')!.errors!==null && personForm.get('Pincode')!.errors!['maxLength']">
+                Pincode should be of 6 Digits
+            </mat-error>
+            </mat-form-field>
+    </div>
+
+    <div class="col-sm-4" >
+        <button style="margin-top: 45px;height:40px;width:240px" type="submit" class="btn btn-success" >Create Person</button>
+    </div> 
+
+</div>
+
+<div style="margin-left: 32%;">
+    <button style="margin-top: 45px;height:40px;width:240px" type="submit" class="btn btn-primary" [routerLink]="['/app-dashboard']" >Go Back To Dashboard</button>
+</div> 
+</form>
