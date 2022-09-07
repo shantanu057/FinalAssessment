@@ -88,8 +88,7 @@
             <mat-label>Pincode</mat-label>
             <input matInput type="text"  name="Pincode" placeholder="Pincode" formControlName="Pincode">
             <mat-error *ngIf="personForm.get('Pincode')!.errors!['required']">
-                <!-- Pincode is required -->
-                Pincode should be of 6 Digits
+                Pincode is required
             </mat-error>
 
             <mat-error *ngIf="personForm.get('Pincode')!.errors!==null && personForm.get('Pincode')!.errors!['maxLength']">
